@@ -1,4 +1,4 @@
-# Langchain Zero to Hero
+# Langchain and Langgraph Zero to Hero
 
 Welcome to the **Langchain Zero to Hero** repository, a comprehensive guide designed to lead you from a beginner to an advanced user of Langchain. This repository integrates code from the official Langchain GitHub repository and additional community-sourced examples to illustrate practical applications and workflows using Langchain.
 
