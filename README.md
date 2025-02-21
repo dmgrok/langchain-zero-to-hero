@@ -41,6 +41,7 @@ jupyter notebook
 - **Chaining Techniques:** Detailed examples on how to combine multiple operations to create seamless processing pipelines.
 - **Prompt Engineering:** Exploration of strategies for crafting effective prompts to drive language model outputs.
 - **Integration Practices:** Insights into leveraging both official resources and community-developed solutions for building robust applications.
+- **Agents:** Create your own agent that searches the internet and impersonates a celebrity like Trump, Musk, Biden
 
 ## Credits and Acknowledgments
 
