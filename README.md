@@ -20,7 +20,6 @@ Welcome to the **Langchain Zero to Hero** repository, a comprehensive guide desi
 
 - **Python 3.8 or later:** Ensure Python is installed on your system.
 - **Jupyter Notebook/Lab:** The quickstart is delivered via a Jupyter Notebook.
-- **Optional - Dev Container:** Use the provided `.devcontainer` configuration for a consistent development environment.
 
 ### Steps
 
@@ -28,6 +27,10 @@ Welcome to the **Langchain Zero to Hero** repository, a comprehensive guide desi
 git clone https://github.com/dmgrok/langchain-zero-to-hero.git
 - **Change into the repository directory:**
 cd langchain-zero-to-hero
+
+Get an OpenAI API key at https://platform.openai.com/settings/organization/api-keys
+Get a Tavily API key to search the internet at https://app.tavily.com/playground
+
 - **Launch Jupyter Notebook:**
 jupyter notebook
 - **Open and run `Quickstart_langchain.ipynb`:** Follow the interactive notebook to explore and experiment with Langchain.
