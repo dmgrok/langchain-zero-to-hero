@@ -18,7 +18,7 @@ Welcome to the **Langchain Zero to Hero** repository, a comprehensive guide desi
 
 ### Prerequisites
 
-- **Python 3.8 or later:** Ensure Python is installed on your system.
+- **Python 3.9 or later:** Ensure Python is installed on your system.
 - **Jupyter Notebook/Lab:** The quickstart is delivered via a Jupyter Notebook.
 
 ### Steps
