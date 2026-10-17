@@ -1,51 +1,72 @@
-# Langchain and Langgraph Zero to Hero
+# LangChain and LangGraph Zero to Hero
 
-Welcome to the **Langchain Zero to Hero** repository, a comprehensive guide designed to lead you from a beginner to an advanced user of Langchain. This repository integrates code from the official Langchain GitHub repository and additional community-sourced examples to illustrate practical applications and workflows using Langchain.
+A hands-on notebook that walks through the core building blocks of LangChain and LangGraph, from a first model call to tool-using agents with memory and human-in-the-loop review. It brings examples from the official LangChain and LangGraph documentation and community material together into one guided path.
 
-## Objective
+> **Versioned educational snapshot.** The notebook was written and run in February 2025 against LangChain 0.3.2 and LangGraph 0.2.60 (exact pins in `requirements.txt`). It is a learning resource, not production code and not a reference for the latest APIs. Several imports and classes it uses, such as `ConversationBufferMemory`, `LLMChain`, `langchain.vectorstores` and the `state_modifier` argument, have since been deprecated or renamed upstream. Check the current [LangChain](https://python.langchain.com/) and [LangGraph](https://langchain-ai.github.io/langgraph/) documentation before reusing these patterns.
 
-- **Quickstart Learning:** Provide a hands-on, notebook-based introduction to Langchain's core functionalities.
-- **Practical Demonstrations:** Showcase how to build, combine, and chain language model operations into working pipelines.
-- **Balanced Approach:** Integrate best practices from both the official Langchain codebase and community-driven examples.
+## What the notebook covers
 
-## Why Is This Necessary?
+- **Models and messages:** basic chat model calls and the OpenAI-compatible message format.
+- **Prompts:** prompt templates and few-shot prompting.
+- **Chains:** composing prompts, models and output parsers with the pipe operator.
+- **Retrieval:** text splitting, document loaders, embeddings, FAISS vector store, retrievers and contextual compression.
+- **Memory:** conversation memory with the legacy LangChain approach, then with LangGraph checkpoints.
+- **Agents and tools:** custom tools, tool-calling agents, LangGraph ReAct agents, streaming and recursion limits.
+- **Human in the loop:** pausing a graph with `interrupt`, asking the user for missing input, web search with Tavily, and reviewing tool calls before they run.
 
-- **Bridging the Gap:** As the landscape of language model applications evolves rapidly, this guide brings together diverse resources to ease the learning curve for new users.
-- **Real-World Applications:** Practical, code-driven examples are essential for understanding how to implement and experiment with Langchain effectively.
-- **Community & Official Insights:** Merging ideas from both official sources and community contributions leads to more robust and innovative usage.
+## Prerequisites
 
-## How to Launch
+- Python 3.11, the version used by the dev container and by the recorded run.
+- An [OpenAI API key](https://platform.openai.com/settings/organization/api-keys).
+- A [Tavily API key](https://app.tavily.com/) for the web search examples.
 
-### Prerequisites
+Running the notebook calls paid APIs. The notebook uses `gpt-3.5-turbo` and `text-embedding-ada-002` to keep costs low; if those models are no longer available to your account, change the model names in the affected cells.
 
-- **Python 3.9 or later:** Ensure Python is installed on your system.
-- **Jupyter Notebook/Lab:** The quickstart is delivered via a Jupyter Notebook.
+## Set up the environment
 
-### Steps
+Choose one option.
 
-- **Clone the repository:**
-- git clone https://github.com/dmgrok/langchain-zero-to-hero.git
-- **Change into the repository directory:**
-- cd langchain-zero-to-hero
-- Get an OpenAI API key at https://platform.openai.com/settings/organization/api-keys 
-- Get a Tavily API key to search the internet at https://app.tavily.com/playground
+**Dev container or GitHub Codespaces.** Open the repository in VS Code with the Dev Containers extension, or in a Codespace. The container uses Python 3.11 and installs `requirements.txt` automatically.
 
-- **Launch Jupyter Notebook:**
+**Local virtual environment.**
 
-- **Open and run `Quickstart_langchain.ipynb`:** Follow the interactive notebook to explore and experiment with Langchain.
+```bash
+git clone https://github.com/dmgrok/langchain-zero-to-hero.git
+cd langchain-zero-to-hero
+python3.11 -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+```
 
-## Concepts Behind the Quickstart
+**Google Colab.** Upload `Quickstart_langchain.ipynb` to Colab. The first cell installs the pinned packages.
 
-- **Langchain Fundamentals:** An introduction to the library’s structure, purpose, and its role in streamlining language model interactions.
-- **Chaining Techniques:** Detailed examples on how to combine multiple operations to create seamless processing pipelines.
-- **Prompt Engineering:** Exploration of strategies for crafting effective prompts to drive language model outputs.
-- **Integration Practices:** Insights into leveraging both official resources and community-developed solutions for building robust applications.
-- **Agents:** Create your own agent that searches the internet and impersonates a celebrity like Trump, Musk, Biden
+## Configure API keys
 
-## Credits and Acknowledgments
+The notebook's `set_env` helper looks for each key in Colab secrets, then Kaggle secrets, then a local `.env` file.
 
-This guide is built upon a blend of code samples and ideas sourced from the official Langchain repository along with various community contributions. The integration of these diverse approaches aims to offer a well-rounded and practical learning experience.
+- **Colab:** add `OPENAI_API_KEY` and `TAVILY_API_KEY` in the Secrets panel.
+- **Local or dev container:** copy the sample file and fill in your keys. `.env` is ignored by git.
+
+```bash
+cp .env-sample .env
+```
+
+## Launch the notebook
+
+- **VS Code:** open `Quickstart_langchain.ipynb` and select the `.venv` or dev container Python interpreter as the kernel.
+- **Jupyter in the browser:**
+
+  ```bash
+  pip install jupyterlab
+  jupyter lab Quickstart_langchain.ipynb
+  ```
+
+Run the cells from top to bottom. The first two cells run `pip install` for Colab users; in a prepared environment they only confirm that the pinned packages are present. Saved outputs have been cleared, so each run produces its own results.
+
+## Credits and acknowledgments
+
+Most examples are adapted from the official LangChain and LangGraph documentation, combined with community examples, to offer one practical learning path.
 
 ## License
 
-This project is licensed under the MIT License – see the `LICENSE` file for full details.
+This project is licensed under the MIT License. See the `LICENSE` file for details.

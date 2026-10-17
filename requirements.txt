@@ -1,0 +1,26 @@
+# Versioned teaching snapshot, not the latest LangChain/LangGraph APIs.
+# Pins below are taken from the notebook's recorded install output
+# (Colab run, Python 3.11, February 2025).
+python-dotenv==1.0.0
+set-env-colab-kaggle-dotenv==0.1.4
+langchain==0.3.2
+langchain-core==0.3.35
+langchain-community==0.3.1
+langchain-openai==0.3.6
+langchain-text-splitters==0.3.6
+langgraph==0.2.60
+langgraph-checkpoint==2.0.16
+langgraph-sdk==0.1.53
+langsmith==0.1.147
+openai==1.61.1
+tiktoken==0.9.0
+pydantic==2.10.6
+numpy==1.26.4
+
+# Recorded in the notebook's local install output (web document loader).
+beautifulsoup4==4.12.3
+
+# Not recorded in the notebook outputs: pinned to the latest release
+# available on 2025-02-21, the date of the notebook's last recorded run.
+faiss-cpu==1.9.0.post1
+ipykernel==6.29.5

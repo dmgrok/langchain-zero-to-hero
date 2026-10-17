@@ -1,0 +1,35 @@
+name: Notebook check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install pinned requirements
+        run: |
+          pip install -r requirements.txt
+          pip check
+      - name: Validate notebook structure and cleared outputs
+        run: |
+          pip install nbformat
+          python - <<'PY'
+          import nbformat
+          nb = nbformat.read("Quickstart_langchain.ipynb", as_version=4)
+          nbformat.validate(nb)
+          dirty = [i for i, c in enumerate(nb.cells)
+                   if c.cell_type == "code" and (c.outputs or c.execution_count is not None)]
+          assert not dirty, f"Clear notebook outputs before committing (cells {dirty})"
+          print(f"{len(nb.cells)} cells valid, outputs cleared")
+          PY
